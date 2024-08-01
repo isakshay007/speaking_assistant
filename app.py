@@ -24,12 +24,10 @@ image = Image.open("./logo/lyzr-logo.png")
 st.image(image, width=150)
 
 # App title and introduction
-st.title("Personalized Gift Assistant")
-st.markdown("Welcome to Personalized Gift Assistant! Let us help you find the perfect gift for any occasion, tailored to your recipient's unique interests and your budget.")
-st.markdown("            1) Mention your receiver's age. ")
-st.markdown("            2) Mention your receiver's interest.")
-st.markdown("            3) Mention the occasion.")
-st.markdown("            4) Mention your budget.")
+st.title("Public Speaking Assistant")
+st.markdown("Welcome to Tailored Public Speaking Exercises! Just tell us about your audience and the type of speech you're preparing for, and we'll give you custom drills to help you shine.")
+st.markdown("            1) Mention us about your audience type.")
+st.markdown("            2) Mention the type of speech you're preparing for.")
 input = st.text_input(" Please enter the above details:",placeholder=f"""Type here""")
 
 open_ai_text_completion_model = OpenAIModel(
@@ -44,22 +42,26 @@ open_ai_text_completion_model = OpenAIModel(
 
 def generation(input):
     generator_agent = Agent(
-        role="Expert GIFT CONSULTANT",
-        prompt_persona=f"Your task is to CURATE a personalized list of 5-7 GIFTS for the user and provide EXPLANATIONS for each choice, taking into account the RECEIVER'S AGE, RECEIVER'S INTERESTS, the OCCASION, and the BUDGET.")
+        role="Expert PUBLIC SPEAKING ASSISTANT",
+        prompt_persona=f"Your task is to ANALYZE the user's AUDIENCE and the TYPE of speech they are preparing for, and provide them with PERSONALIZED public speaking drills.")
     prompt = f"""
-You are an Expert GIFT CONSULTANT. Your task is to CURATE a personalized list of 5-7 GIFTS for the user and provide EXPLANATIONS for each choice, taking into account the RECEIVER'S AGE, RECEIVER'S INTERESTS, the OCCASION, and the BUDGET.
+You are an Expert PUBLIC SPEAKING ASSISTANT. Your task is to ANALYZE the user's AUDIENCE and the TYPE of speech they are preparing for, and provide them with PERSONALIZED public speaking drills.
 
-Here's how you will approach this task:
+Here's your step-by-step guide:
 
-1. IDENTIFY the information about the receiver's age and interests to ensure that your recommendations are AGE-APPROPRIATE and ALIGN with their preferences.Next, CONSIDER THE OCCASION for which the gift is intended to ensure that your suggestions are SUITABLE and THOUGHTFUL for that specific event. Then, ANALYZE the budget parameters to make sure that your recommendations are AFFORDABLE and PROVIDE VALUE within the user's financial limits.
+1. IDENTIFY the demographics, interests, and expectations of the audience that the user will be addressing.
 
-2. Now, IDENTIFY a list of 5-7 GIFTS that meet all these criteria. Make sure each gift suggestion is CREATIVE and UNIQUE to show thoughtfulness.
+2. DETERMINE the purpose of the speech, whether it is to inform, persuade, entertain, or inspire.
 
-3. For each gift on your list, EXPLAIN precisely WHY you have chosen it by LINKING it back to the receiver's age, interests, occasion, and budget in a clear manner.
+3. DEVELOP a set of tailored public speaking exercises focusing on clarity, pace, intonation, and body language that align with both the audience's profile and speech type.
 
-4. Ensure that your explanations HIGHLIGHT how each gift is particularly TAILORED to the receiver's personal tastes or needs.
+4. ENCOURAGE practice of these drills in a simulated environment that closely resembles the actual speaking event.
 
-By following these steps meticulously, you will craft a list that not only delights but also impresses with its personalized touch.
+5. SUGGEST techniques for managing nerves and engaging effectively with the audience.
+
+6. ADVISE on how to use visual aids or storytelling elements to make their speech more compelling.
+
+You MUST ensure that these drills are PRACTICAL and can be easily integrated into daily preparation routines.
 
 
  """
@@ -91,3 +93,4 @@ with st.expander("ℹ️ - About this App"):
     st.link_button("Slack",
                    url='https://join.slack.com/t/genaiforenterprise/shared_invite/zt-2a7fr38f7-_QDOY1W1WSlSiYNAEncLGw',
                    use_container_width=True)
+    
